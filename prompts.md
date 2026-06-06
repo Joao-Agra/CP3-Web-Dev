@@ -1,17 +1,17 @@
-1. **IAs consultadas:**
+### 1. **IAs consultadas:**
 
 Chat GPT (OpenAI), Claude(Anthropic) e Gemini(Google)
 
 ---
 
-2. **Prompt utilizado:**
+### 2. **Prompt utilizado:**
 
 Olá! Preciso que você atue como um Engenheiro de Software Sênior e desenvolva uma aplicação web completa (HTML, CSS e JavaScript puro) para um trabalho acadêmico (CP3). O tema da aplicação será uma "Lista de Filmes Favoritos". 
 
 Siga RIGOROSAMENTE todas as regras, restrições técnicas e o estilo de código abaixo. O código precisa refletir exatamente o nível de aprendizado de uma aula inicial de JavaScript, sem usar sintaxes avançadas ou bibliotecas.
 
 
-### 1. REQUISITOS DE FUNCIONALIDADE
+ **1. REQUISITOS DE FUNCIONALIDADE**
 A aplicação deve conter duas seções principais na mesma página, controladas via visibilidade (ocultar/exibir):
 
 1 Tela de Login:
@@ -29,7 +29,7 @@ A aplicação deve conter duas seções principais na mesma página, controladas
    - Botão/Link ao lado de cada item para REMOVER o filme.
 
 
-### 2. RESTRIÇÕES TÉCNICAS OBRIGATÓRIAS (MUITO IMPORTANTE)
+ **2. RESTRIÇÕES TÉCNICAS OBRIGATÓRIAS (MUITO IMPORTANTE)**
 Para que o código seja aceito pelo professor, você deve seguir estritamente estas regras de desenvolvimento baseadas nas nossas aulas:
 
 - Sem Objetos: Os dados devem ser armazenados estritamente em um array simples de strings (ex: const filmes = ["A", "B", "C"]). É proibido usar array de objetos.
@@ -46,16 +46,16 @@ Para que o código seja aceito pelo professor, você deve seguir estritamente es
   - elemento.addEventListener("click", function nome() { ... }) para os eventos.
 
 
-### 3. VALIDAÇÕES OBRIGATÓRIAS
+ **3. VALIDAÇÕES OBRIGATÓRIAS**
 - Não permitir enviar campos de login vazios.
 - Não permitir adicionar filmes com o campo de texto vazio (exibir erro na tela).
 - Na Edição: Se o usuário cancelar o prompt ou deixar o campo vazio, o item original deve ser mantido intacto.
 
 
-### 4. DESIGN E CSS
+ **4. DESIGN E CSS**
 Escreva um arquivo CSS externo profissional, limpo e moderno. Utilize uma paleta de cores harmoniosa (ex: tons de azul escuro, cinza moderno e branco), cantos arredondados (border-radius), transições suaves nos botões (transition), estilize a lista (remover as bolinhas padrão do 'ul') e garanta que o layout seja centralizado e visualmente agradável tanto para a tela de login quanto para a interface do CRUD.
 
-### RESULTADO ESPERADO
+ **RESULTADO ESPERADO**
 Por favor, forneça a solução dividida em 3 arquivos limpos e prontos:
 1 `index.html` (Estrutura com as duas seções: login e lista).
 2 `style.css` (Design moderno e responsivo).
@@ -63,7 +63,7 @@ Por favor, forneça a solução dividida em 3 arquivos limpos e prontos:
 
 ---
 
-3. **Análise Final dos Problemas Encontrados:** 
+### 3. **Análise Final dos Problemas Encontrados:** 
 
 
 ### ChatGPT
@@ -115,14 +115,14 @@ Funções de editar e remover separadas recebendo índice como parâmetro, desne
 
 ---
 
-4. **Justificativa pela escolha do Claude:** 
+### 4. **Justificativa pela escolha do Claude:** 
 
 O Claude foi a Ia escolhida.
 Apesar dos pontos levantados pelo avaliador, é o único código que não tem nenhuma violação estrutural grave. O ChatGPT não tem .trim() nas validações — o que é um bug real, não uma escolha. O Gemini usou const em vez de var, que é uma violação direta da sintaxe exigida. O Claude, por sua vez, não quebrou nenhuma regra — ele fez tudo que foi pedido e foi além. As funcionalidades extras (logout, Enter, estado vazio) e os métodos mais modernos (.classList, .trim()) funcionam corretamente e melhoram a aplicação. A única ressalva é que o professor pode considerar que extrapolou o escopo — mas isso é diferente de ter violado as restrições.
 
 ---
 
-5. **Prompts:** 
+### 5. **Prompts:** 
 
 1. Chat GPT:
 
