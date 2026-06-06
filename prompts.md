@@ -126,6 +126,7 @@ Apesar dos pontos levantados pelo avaliador, é o único código que não tem ne
 
 1. Chat GPT:
 
+
 ### Index.html:
 
 <!DOCTYPE html>
@@ -171,6 +172,7 @@ Apesar dos pontos levantados pelo avaliador, é o único código que não tem ne
     <script src="script.js"></script>
 </body>
 </html>
+
 
 ### Style.css:
 
@@ -277,6 +279,7 @@ li {
 .oculto {
     display: none;
 }
+
 
 ### Script.js:
 
@@ -430,6 +433,7 @@ renderizarLista();
 
 2. Claude:
 
+
 ### Index.html:
 
 <!DOCTYPE html>
@@ -501,6 +505,7 @@ renderizarLista();
   <script src="script.js"></script>
 </body>
 </html>
+
 
 ### Style.css:
 
@@ -1001,6 +1006,7 @@ html, body {
   }
 }
 
+
 ### Script.js:
 
 // ============================================================
@@ -1219,6 +1225,7 @@ renderizar();
 
 3. Gemini:
 
+
 ### Index.html:
 
 <!DOCTYPE html>
@@ -1280,6 +1287,7 @@ renderizar();
 
 </body>
 </html>
+
 
 ### Style.css:
 
@@ -1479,6 +1487,7 @@ button:active {
 .ocultar {
     display: none !important;
 }
+
 
 ### Script.js:
 
