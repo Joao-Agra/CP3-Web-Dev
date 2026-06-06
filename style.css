@@ -1,0 +1,496 @@
+/* ============================================================
+   CineList — CP3 | Meus Filmes Favoritos
+   Paleta: Azul-marinho escuro, cinza grafite e dourado
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep:       #0d1117;
+  --bg-card:       #161b22;
+  --bg-card2:      #1c2330;
+  --border:        #2d3748;
+  --gold:          #d4a843;
+  --gold-light:    #f0c96a;
+  --gold-dim:      rgba(212, 168, 67, 0.15);
+  --text-primary:  #e6edf3;
+  --text-secondary:#8b949e;
+  --text-muted:    #4d5566;
+  --red-soft:      #f85149;
+  --red-dim:       rgba(248, 81, 73, 0.12);
+  --blue-soft:     #58a6ff;
+  --blue-dim:      rgba(88, 166, 255, 0.12);
+  --radius-sm:     6px;
+  --radius-md:     12px;
+  --radius-lg:     18px;
+  --shadow-card:   0 8px 32px rgba(0,0,0,0.5);
+  --shadow-btn:    0 4px 14px rgba(212,168,67,0.25);
+  --transition:    0.22s ease;
+}
+
+html, body {
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ---------- Utility ---------- */
+.hidden {
+  display: none !important;
+}
+
+.mensagem-erro {
+  color: var(--red-soft);
+  font-size: 0.82rem;
+  font-weight: 500;
+  min-height: 1.2em;
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   TELA DE LOGIN
+   ============================================================ */
+#tela-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212,168,67,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(88,166,255,0.05) 0%, transparent 55%),
+    var(--bg-deep);
+}
+
+.login-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 48px 44px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-card);
+  animation: fadeSlideUp 0.45s ease both;
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.logo-icon {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 12px rgba(212,168,67,0.4));
+}
+
+.logo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.logo-sub {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+/* ---------- Form Groups ---------- */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 7px;
+}
+
+.form-group input,
+#input-filme {
+  width: 100%;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  padding: 11px 14px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+#input-filme:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.form-group input::placeholder,
+#input-filme::placeholder {
+  color: var(--text-muted);
+}
+
+/* ---------- Login Button ---------- */
+#btn-login {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: var(--gold);
+  color: #0d1117;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+  box-shadow: var(--shadow-btn);
+}
+
+#btn-login:hover {
+  background: var(--gold-light);
+  box-shadow: 0 6px 20px rgba(212,168,67,0.38);
+  transform: translateY(-1px);
+}
+
+#btn-login:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   TELA CRUD
+   ============================================================ */
+#tela-crud {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 70% 80%, rgba(212,168,67,0.05) 0%, transparent 55%),
+    var(--bg-deep);
+  animation: fadeIn 0.35s ease both;
+}
+
+/* ---------- Header ---------- */
+.crud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon-sm {
+  font-size: 1.4rem;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+#btn-logout {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 7px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+#btn-logout:hover {
+  border-color: var(--red-soft);
+  color: var(--red-soft);
+}
+
+/* ---------- Main Content ---------- */
+.crud-main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px 60px;
+}
+
+.crud-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: var(--shadow-card);
+}
+
+.crud-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crud-titulo::before {
+  content: '🎥';
+  font-size: 1.3rem;
+}
+
+/* ---------- Input Area ---------- */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primario,
+.btn-secundario {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-primario {
+  background: var(--gold);
+  color: #0d1117;
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primario:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(212,168,67,0.35);
+}
+
+.btn-secundario {
+  background: var(--bg-card2);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secundario:hover {
+  background: var(--blue-dim);
+  border-color: var(--blue-soft);
+  color: var(--blue-soft);
+  transform: translateY(-1px);
+}
+
+.btn-primario:active,
+.btn-secundario:active {
+  transform: translateY(0);
+}
+
+/* ---------- Lista ---------- */
+.lista-wrapper {
+  margin-top: 24px;
+}
+
+#lista-filmes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada item da lista */
+#lista-filmes li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  transition: border-color var(--transition), transform var(--transition);
+  animation: fadeSlideRight 0.3s ease both;
+}
+
+#lista-filmes li:hover {
+  border-color: rgba(212,168,67,0.3);
+  transform: translateX(3px);
+}
+
+/* Número de posição + nome */
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.item-numero {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 28px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.item-nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Botões de ação */
+.item-acoes {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-editar,
+.btn-remover {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-editar {
+  background: var(--blue-dim);
+  color: var(--blue-soft);
+  border: 1px solid transparent;
+}
+
+.btn-editar:hover {
+  background: var(--blue-soft);
+  color: var(--bg-deep);
+  transform: scale(1.05);
+}
+
+.btn-remover {
+  background: var(--red-dim);
+  color: var(--red-soft);
+  border: 1px solid transparent;
+}
+
+.btn-remover:hover {
+  background: var(--red-soft);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ---------- Estado vazio ---------- */
+.lista-vazia {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.lista-vazia span {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   ANIMAÇÕES
+   ============================================================ */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 540px) {
+  .login-card {
+    padding: 36px 26px;
+  }
+
+  .crud-card {
+    padding: 26px 20px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .crud-header {
+    padding: 14px 20px;
+  }
+
+  .item-acoes {
+    gap: 6px;
+  }
+
+  .btn-editar,
+  .btn-remover {
+    padding: 5px 9px;
+    font-size: 0.73rem;
+  }
+}
